@@ -19,14 +19,12 @@ class Mesa extends Model
         'capacidad',
         'estado',
         'activa',
-        'eliminada_en',
     ];
 
     protected function casts(): array
     {
         return [
             'activa' => 'boolean',
-            'eliminada_en' => 'datetime',
         ];
     }
 

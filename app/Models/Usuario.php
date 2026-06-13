@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
-#[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes'])]
+#[Hidden(['password'])]
 class Usuario extends Authenticatable
 {
-    use HasApiTokens, Notifiable, TwoFactorAuthenticatable;
+    use HasApiTokens, Notifiable;
 
     protected $table = 'usuario';
 
@@ -27,7 +26,6 @@ class Usuario extends Authenticatable
         'cedula',
         'telefono',
         'correo',
-        'google_id',
         'password',
         'cargos_idCargo',
         'activo',
@@ -40,18 +38,7 @@ class Usuario extends Authenticatable
             'password' => 'hashed',
             'activo' => 'boolean',
             'creado_en' => 'datetime',
-            'two_factor_confirmed_at' => 'datetime',
         ];
-    }
-
-    public function getEmailForPasswordReset(): string
-    {
-        return (string) $this->correo;
-    }
-
-    public function routeNotificationForMail($notification = null): string
-    {
-        return (string) $this->correo;
     }
 
     public function cargo(): BelongsTo

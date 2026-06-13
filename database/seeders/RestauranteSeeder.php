@@ -29,16 +29,15 @@ class RestauranteSeeder extends Seeder
     {
         $this->limpiarTablas();
 
-        // 1) Cargos (5)
+        // 1) Cargos (4)
         $cargos = collect([
             'CLIENTE',
             'MESERO',
             'COCINERO',
-            'CAJERO',
             'ADMINISTRADOR',
         ])->map(fn ($nombre) => Cargo::create(['nombre' => $nombre]))->keyBy('nombre');
 
-        // 2) Usuarios (6) (5 roles + 1 extra cliente)
+        // 2) Usuarios (5) (4 roles + 1 extra cliente)
         $cliente = Usuario::create([
             'nombre' => 'Cliente',
             'apellido' => 'Demo',
@@ -75,23 +74,11 @@ class RestauranteSeeder extends Seeder
             'creado_en' => now(),
         ]);
 
-        $cajero = Usuario::create([
-            'nombre' => 'Cajero',
-            'apellido' => 'Demo',
-            'cedula' => '100000004',
-            'telefono' => '3000000004',
-            'correo' => 'cajero@gmail.com',
-            'password' => 'cajeroo',
-            'cargos_idCargo' => $cargos['CAJERO']->idCargo,
-            'activo' => true,
-            'creado_en' => now(),
-        ]);
-
         $admin = Usuario::create([
             'nombre' => 'Admin',
             'apellido' => 'Demo',
-            'cedula' => '100000005',
-            'telefono' => '3000000005',
+            'cedula' => '100000004',
+            'telefono' => '3000000004',
             'correo' => 'admin@gmail.com',
             'password' => 'adminn',
             'cargos_idCargo' => $cargos['ADMINISTRADOR']->idCargo,
@@ -102,8 +89,8 @@ class RestauranteSeeder extends Seeder
         $cliente2 = Usuario::create([
             'nombre' => 'Cliente2',
             'apellido' => 'Demo',
-            'cedula' => '100000006',
-            'telefono' => '3000000006',
+            'cedula' => '100000005',
+            'telefono' => '3000000005',
             'correo' => 'cliente2@gmail.com',
             'password' => 'cliente22',
             'cargos_idCargo' => $cargos['CLIENTE']->idCargo,

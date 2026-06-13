@@ -56,17 +56,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Frontend URL (React / Vite)
-    |--------------------------------------------------------------------------
-    |
-    | Used after Google OAuth to redirect back to the SPA with the session token.
-    |
-    */
-
-    'frontend_url' => env('FRONTEND_URL', 'http://localhost:5173'),
-
-    /*
-    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
@@ -89,7 +78,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'es'),
+    'locale' => env('APP_LOCALE', 'en'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 

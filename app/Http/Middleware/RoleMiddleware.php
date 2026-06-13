@@ -17,11 +17,6 @@ class RoleMiddleware
         }
 
         $user->loadMissing('cargo');
-
-        if (! $user->activo) {
-            return response()->json(['message' => 'Tu cuenta está inactiva.'], 403);
-        }
-
         $rol = $user->cargo?->nombre;
 
         if (! $rol || ! in_array($rol, $roles, true)) {

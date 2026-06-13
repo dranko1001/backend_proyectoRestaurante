@@ -20,9 +20,6 @@ class PedidoDetalle extends Model
         'precio_unitario',
         'nota',
         'estado_item',
-        'motivo_cancelacion',
-        'cancelado_en',
-        'cancelado_por_idUsuario',
         'creado_en',
     ];
 
@@ -31,13 +28,7 @@ class PedidoDetalle extends Model
         return [
             'precio_unitario' => 'decimal:2',
             'creado_en' => 'datetime',
-            'cancelado_en' => 'datetime',
         ];
-    }
-
-    public function canceladoPor(): BelongsTo
-    {
-        return $this->belongsTo(Usuario::class, 'cancelado_por_idUsuario', 'idUsuario');
     }
 
     public function pedido(): BelongsTo
